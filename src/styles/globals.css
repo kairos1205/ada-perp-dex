@@ -10,3 +10,16 @@ body {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #252131;
+  border-radius: 30px;
+  border: 3px none #252131;
+}

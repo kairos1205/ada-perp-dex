@@ -1,4 +1,4 @@
-export const DEFAULT_SYMBOL ="PERP_ETH_USDC";
+export const DEFAULT_SYMBOL = "PERP_ETH_USDC";
 
 export const LogoUrl = (symbol: string) => {
   return `https://oss.orderly.network/static/symbol_logo/${symbol}.png`;
@@ -39,18 +39,18 @@ export type MarketsItemCustom = {
 };
 
 export type MarketInfo = {
-    symbol: string,
-    index_price: number,
-    mark_price: number,
-    sum_unitary_funding: number,
-    est_funding_rate: number,
-    last_funding_rate: number,
-    next_funding_time: number,
-    open_interest: number,
-    "24h_open": number,
-    "24h_close": number,
-    "24h_high": number,
-    "24h_low": number,
-    "24h_volume": number,
-    "24h_amount": number,
-}
+  symbol: string;
+  index_price: number;
+  mark_price: number;
+  sum_unitary_funding: number;
+  est_funding_rate: number;
+  last_funding_rate: number;
+  next_funding_time: number;
+  open_interest: number;
+  "24h_open": number;
+  "24h_close": number;
+  "24h_high": number;
+  "24h_low": number;
+  "24h_volume": number;
+  "24h_amount": number;
+};

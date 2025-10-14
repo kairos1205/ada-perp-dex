@@ -13,16 +13,25 @@ import {
 import MarketInfoCom from "@/components/trading/marketinfo";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import Positions from "@/components/trading/positions";
-import { CardanoWallet, useWallet } from "@meshsdk/react";
 import WalletConnect from "@/components/trading/walletconnect";
+import TradeOrderPanel from "@/components/trading/trade";
+
+import dynamic from "next/dynamic";
+
+// ⛔ Disable SSR for this component
+
+const TVChart = dynamic(
+  () =>
+    import("react-ts-tradingview-widgets").then(
+      (mod) => mod.AdvancedRealTimeChart
+    ),
+  { ssr: false }
+);
 
 const Page = () => {
   // const params = useParams();
   const [symbol, setSymbol] = useState(DEFAULT_SYMBOL);
   const [marketInfo, setMarketInfo] = useState<MarketInfo>(DEFAULT_MARKET_INFO);
-  const { wallet, connected, name, connecting, connect, disconnect, error } =
-    useWallet();
-  const [accounts, setAccounts] = useState(false);
 
   const router = useRouter();
 
@@ -57,13 +66,19 @@ const Page = () => {
           </div>
           <div className="flex flex-row gap-2">
             <div className="bg-[#16151d] p-2 rounded-md min-h-[400px] w-[100%]">
-              <AdvancedRealTimeChart
+              {/* <AdvancedRealTimeChart
+                // symbol={TradingViewSymbol(symbol)}
+                symbol="BTCUSDC"
+                theme="dark"
+                autosize
+              ></AdvancedRealTimeChart> */}
+              <TVChart
                 symbol={TradingViewSymbol(symbol)}
                 theme="dark"
                 autosize
-              ></AdvancedRealTimeChart>
+              />
             </div>
-            <div className="bg-[#16151d] max-w-[300px] min-w-[300px]">
+            <div className="bg-[#16151d] max-w-[300px] min-w-[300px] p-20 ">
               Order Book
             </div>
           </div>
@@ -75,7 +90,9 @@ const Page = () => {
           <div className="bg-[#16151d] rounded-md">
             <WalletConnect />
           </div>
-          <div className="bg-[#16151d]   min-h-[300px]">Trade</div>
+          <div className="bg-[#16151d] rounded-md">
+            <TradeOrderPanel />
+          </div>
         </div>
       </div>
       <Footer />
