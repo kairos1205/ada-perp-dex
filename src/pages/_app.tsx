@@ -6,8 +6,10 @@ import "@meshsdk/react/styles.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MeshProvider>
-      <Component {...pageProps} />
-    </MeshProvider>
+    <div className="roboto-font">
+      <MeshProvider>
+        <Component {...pageProps} />
+      </MeshProvider>
+    </div>
   );
 }
