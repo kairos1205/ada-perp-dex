@@ -16,6 +16,16 @@ type SymbolsProps = {
 };
 
 const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
+  //   const [
+  //     data,
+  //     {
+  //       addToHistory,
+  //       favoriteTabs,
+  //       updateFavoriteTabs,
+  //       updateSymbolFavoriteState,
+  //     },
+  //   ] = useMarkets(MarketsType.ALL);
+
   const [searchKeyword, setSearchKeyword] = useState("");
   const [marketInfolist, setMarketInforList] = useState<MarketsItemCustom[]>(
     []
@@ -23,7 +33,6 @@ const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
 
   const getAllMarketInfo = async () => {
     const data = await fetchAllMarketInfoForAllSymbol();
-    console.log(data);
     setMarketInforList(data);
   };
 
@@ -34,33 +43,42 @@ const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
   }, []);
 
   useEffect(() => {
-    console.log(marketInfolist)
-  }, [marketInfolist])
+    console.log(marketInfolist);
+  }, [marketInfolist]);
 
   return (
     <div className="w-full">
       <div className="px-1 pb-1 w-full">
         <SearchInput onChange={setSearchKeyword} value={searchKeyword} />
       </div>
-      <div className="px-1 w-full">
-        <table className="w-full">
-          <thead className="text-[14px] text-[#5f666e]">
+
+      <div className="px-1 w-full border border-gray-200  rounded-lg overflow-hidden">
+        <table className="w-full table-fixed">
+          {/* Table Header */}
+          <thead className="text-[14px] text-[#5f666e] bg-[#16151d] sticky top-0 z-10">
             <tr>
-              <td className="h-[36px] w-1/2">Market / Volume</td>
-              <td className="h-[36px] w-1/2">Price / Change</td>
+              <th className="h-[36px] w-1/2 text-left px-2">Market / Volume</th>
+              <th className="h-[36px] w-1/2 text-left px-2">Price / Change</th>
             </tr>
           </thead>
-          <tbody>
-            {marketInfolist.map((marketInfo) => (
-              <MarketSymbol
-                key={marketInfo.symbol}
-                {...marketInfo}
-                onClick={() => onSymbolChange(marketInfo)}
-              />
-            ))}
-            {/* <MarketSymbol /> */}
-          </tbody>
         </table>
+
+        {/* Scrollable Body */}
+        <div className="max-h-[800px] min-h-[800px] overflow-y-auto">
+          <table className="w-full table-fixed">
+            <tbody className="divide-y divide-gray-200">
+              {marketInfolist.filter(market => market.symbol.includes(searchKeyword.toUpperCase()))
+                .sort((a, b) => b.index_price - a.index_price)
+                .map((marketInfo) => (
+                  <MarketSymbol
+                    key={marketInfo.symbol}
+                    {...marketInfo}
+                    onClick={() => onSymbolChange(marketInfo)}
+                  />
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
