@@ -122,6 +122,18 @@
     "@basementuniverse/commonjs" "^1.2.10"
     seed-random "^2.2.0"
 
+"@bedrock-layout/use-forwarded-ref@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@bedrock-layout/use-forwarded-ref/-/use-forwarded-ref-2.0.17.tgz#b5246101c0851275777784baeb065f30d32825e3"
+  integrity sha512-4meaaQjg2ZtP9eg0F2LsL0tENmxZ6CTNz4tLheOOyKjqTSjM11yKjSOsMwaEJ8uRyQf+XBDFBmb/IfpHAuCqug==
+  dependencies:
+    "@bedrock-layout/use-stateful-ref" "^2.0.17"
+
+"@bedrock-layout/use-stateful-ref@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@bedrock-layout/use-stateful-ref/-/use-stateful-ref-2.0.17.tgz#16b1654ff5454dc396ceb7802df7ff662b6be86e"
+  integrity sha512-pzVUYMTa32E9dGa2xadOFej96gYJEHg+Qh4Tg0fMj6zYT4y5LZpE+XkCiPcFafR3kTFhqSGfjRTIJbnSyeEAxQ==
+
 "@biglup/is-cid@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@biglup/is-cid/-/is-cid-1.0.3.tgz#6f97610814f882e0c6e9a08b978d202b6d345b3c"
@@ -454,6 +466,11 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@emurgo/cardano-message-signing-nodejs/-/cardano-message-signing-nodejs-1.1.0.tgz#04d45a48deed32e8ead16cf1e534162562e16835"
   integrity sha512-PQRc8K8wZshEdmQenNUzVtiI8oJNF/1uAnBhidee5C4o1l2mDLOW+ur46HWHIFKQ6x8mSJTllcjMscHgzju0gQ==
+
+"@emurgo/cardano-serialization-lib-browser@^15.0.1":
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/@emurgo/cardano-serialization-lib-browser/-/cardano-serialization-lib-browser-15.0.1.tgz#2a24e59ebad208241fbf24c729c05813804691c6"
+  integrity sha512-NTOFUqW8D9R5k1nNRu4jaj7h4Rx8Ooqxz4JosRmUA1lOpeU324QXibo2x+BTIr5/hw9FJGqX6dyf6dQLkwCVZA==
 
 "@eslint-community/eslint-utils@^4.7.0", "@eslint-community/eslint-utils@^4.8.0":
   version "4.9.0"
@@ -4020,6 +4037,11 @@ bn.js@^5.1.2, bn.js@^5.2.0, bn.js@^5.2.1:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.2.tgz#82c09f9ebbb17107cd72cb7fd39bd1f9d0aaa566"
   integrity sha512-v2YAxEmKaBLahNwE1mjp4WON6huMNeuDvagFZW+ASCuA/ku0bXR9hSMw0XpiqMoA3+rmnyck/tPRSFQkoC9Cuw==
 
+body-scroll-lock@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-3.1.5.tgz#c1392d9217ed2c3e237fee1e910f6cdd80b7aaec"
+  integrity sha512-Yi1Xaml0EvNA0OYWxXiYNqY24AfWkbA6w5vxE7GWxtKfzIbZM+Qw+aSmkgsbWzbHiy/RCSkUZBplVxTA+E4jJg==
+
 borsh@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/borsh/-/borsh-0.7.0.tgz#6e9560d719d86d90dc589bca60ffc8a6c51fec2a"
@@ -4348,6 +4370,11 @@ class-variance-authority@^0.7.1:
   integrity sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==
   dependencies:
     clsx "^2.1.1"
+
+classnames@^2.3.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -8060,6 +8087,15 @@ react-remove-scroll@^2.6.3:
     tslib "^2.1.0"
     use-callback-ref "^1.3.3"
     use-sidecar "^1.1.3"
+
+react-responsive-modal@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-responsive-modal/-/react-responsive-modal-7.1.0.tgz#63e36dd896008d314ff5e8fb6cbbe4a75ba8aa0e"
+  integrity sha512-BKcvf+SYCmTqmgd22l0tkWT2/eZ9FzkirS0e/4SwDIAfry5QyqGRtsMUpq9z8XPQzIOQZ3EM+5Z2u46iTmVtvQ==
+  dependencies:
+    "@bedrock-layout/use-forwarded-ref" "^2.0.17"
+    body-scroll-lock "^3.1.5"
+    classnames "^2.3.1"
 
 react-router-dom@^7.9.4:
   version "7.9.4"
