@@ -57,14 +57,14 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
       <div className="grid grid-cols-2 rounded-lg overflow-hidden gap-2">
         <div
           onClick={() => setSide("buy")}
-          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-lg w-full hover:text-white hover:duration-300 ${side === "buy" ? "bg-green-600" : "text-gray-400 bg-[#1c2732]"
+          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-md w-full hover:text-white hover:duration-300 ${side === "buy" ? "bg-green-600" : "text-gray-400 bg-[#1c2732]"
             }`}
         >
           Buy
         </div>
         <div
           onClick={() => setSide("sell")}
-          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-lg w-full hover:text-white hover:duration-300 ${side === "sell" ? "bg-[#D73866] hover:bg-[#B73866]" : "text-gray-400 bg-[#1c2732]"
+          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-md w-full hover:text-white hover:duration-300 ${side === "sell" ? "bg-[#D73866] hover:bg-[#B73866]" : "text-gray-400 bg-[#1c2732]"
             }`}
         >
           Sell
@@ -502,14 +502,14 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
       <input type="range" className="w-full accent-blue-500" />
 
       {/* Action button */}
-      <button
-        className={`w-full py-2 rounded-md font-semibold ${side === "buy"
+      <div
+        className={`w-full py-2 rounded-md font-semibold flex items-center justify-center cursor-pointer mt-2 ${side === "buy"
           ? "bg-green-600 hover:bg-green-500"
-          : "bg-pink-600 hover:bg-pink-500"
+          : "bg-[#D73866] hover:bg-[#B73866]"
           }`}
       >
         {side === "buy" ? "Buy / Long" : "Sell / Short"}
-      </button>
+      </div>
 
       {/* Fees + Info */}
       <div className="text-sm text-gray-400 space-y-2">
