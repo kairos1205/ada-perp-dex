@@ -1,3 +1,16 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+/**
+ * Merge Tailwind CSS class names safely
+ * - Handles conditional classes
+ * - Avoids duplicates
+ */
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+
 export const DEFAULT_SYMBOL = "PERP_ETH_USDC";
 
 export const LogoUrl = (symbol: string) => {

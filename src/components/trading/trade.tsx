@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import Switch from "react-switch";
+import PriceOffsetInputs from "./tpSLInput";
 
 type OrderSide = "buy" | "sell";
 const orderTypes = [
@@ -16,6 +18,11 @@ const bboOptions = [
   "Counterparty 5",
   "Queue 1",
   "Queue 5"
+]
+
+const tpPostions = [
+  "TP/SL: Full position",
+  "TP/SL: Partial position"
 ]
 
 const qtyDistributedOptions = ["Flat", "Asc.", "Desc."];
@@ -36,6 +43,9 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
   const [orderType, setOrderType] = useState<string>("Limit");
   const [orderDropBoxOpen, setOrderDropBoxOpen] = useState(false);
 
+  const [tpPostionOpen, setTpPositionOpen] = useState(false);
+  const [tpPosition, setTpPosition] = useState("TP/SL: Full position");
+
   // QTY Distribution option
   const [selectedQtyDis, setSelectedQtyDis] = useState("Flat");
   const [bboDropBoxOpen, setBboDropBoxOpen] = useState(false);
@@ -44,12 +54,17 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
   const [isMid, setIsMid] = useState(true);
 
   const [leverage, setLeverage] = useState(10);
+  const [orderRadio, setOrderRadio] = useState<"Post only" | "IOC" | "FOK">("Post only");
+
   const [price, setPrice] = useState(115157);
   const [qty, setQty] = useState(0);
   const [reduceOnly, setReduceOnly] = useState(false);
   const [orderConfirm, setOrderConfirm] = useState(true);
   const [hidden, setHidden] = useState(false);
   const [execution, setExecution] = useState("Post only");
+
+  const [checkedTPSL, setCheckedTPSL] = useState(false);
+  const [checkedReduceOnly, setCheckedReduceOnly] = useState(false);
 
   return (
     <div className="p-4 space-y-3 w-[100%]">
@@ -77,7 +92,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
           {/* Dropdown button */}
           <div
             onClick={() => setOrderDropBoxOpen(!orderDropBoxOpen)}
-            className="flex w-full items-center justify-between cursor-pointer rounded-md bg-[#1c2732] px-3 py-2 text-gray-200 hover:bg-[#23303c] focus:outline-none duration-200"
+            className="flex w-full items-center justify-between cursor-pointer rounded-md bg-[#1c2732] px-3 py-2 text-gray-200 hover:bg-[#23303C] focus:outline-none duration-200"
           >
             <span>{orderType}</span>
             {orderDropBoxOpen ? (
@@ -96,7 +111,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
                     setOrderType(type);
                     setOrderDropBoxOpen(false);
                   }}
-                  className={`flex items-center justify-between cursor-pointer px-3 py-2 text-gray-300 hover:bg-[#23303c] ${type === orderType ? "text-white font-medium" : ""
+                  className={`flex items-center justify-between cursor-pointer px-3 py-2 text-gray-300 hover:bg-[#23303C] ${type === orderType ? "text-white font-medium" : ""
                     }`}
                 >
                   {type}
@@ -148,7 +163,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
                     {/* Dropdown button */}
                     <div
                       onClick={() => setBboDropBoxOpen(!bboDropBoxOpen)}
-                      className="flex w-full items-center justify-between cursor-pointer rounded-md bg-[#1c2732] px-3 py-2 text-gray-200 hover:bg-[#23303c] focus:outline-none duration-200"
+                      className="flex w-full items-center justify-between cursor-pointer rounded-md bg-[#1c2732] px-3 py-2 text-gray-200 hover:bg-[#23303C] focus:outline-none duration-200"
                     >
                       <span>{bbtOption}</span>
                       {bboDropBoxOpen ? (
@@ -167,7 +182,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
                               setBbtOption(type);
                               setBboDropBoxOpen(false);
                             }}
-                            className={`flex items-center justify-between cursor-pointer px-3 py-2 text-gray-300 hover:bg-[#23303c] ${type === bbtOption ? "text-white font-medium" : ""
+                            className={`flex items-center justify-between cursor-pointer px-3 py-2 text-gray-300 hover:bg-[#23303C] ${type === bbtOption ? "text-white font-medium" : ""
                               }`}
                           >
                             {type}
@@ -182,7 +197,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
                 )}
                 <div className="flex items-center gap-2">
                   <div
-                    className={`${isMid ? "text-gray-300 border border-[#2b3a47]" : "text-[#60a9a4] border border-[#60a9a4]"} rounded-md border px-2 py-[2px] text-[12px] hover:bg-[#23303c] cursor-pointer`}
+                    className={`${isMid ? "text-gray-300 border border-[#2b3a47]" : "text-[#60a9a4] border border-[#60a9a4]"} rounded-md border px-2 py-[2px] text-[12px] hover:bg-[#23303C] cursor-pointer`}
                     onClick={() => setIsMid(false)}
                   >
                     BBO
@@ -527,7 +542,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
       </div>
 
       {/* Toggles */}
-      <div className="flex flex-col space-y-2 text-sm text-gray-300">
+      {/* <div className="flex flex-col space-y-2 text-sm text-gray-300">
         <label className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -580,7 +595,121 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
             </label>
           </div>
         </div>
+      </div> */}
+
+      <div className="w-full">
+        {
+          (orderType == "Limit" || orderType == "Market") && (!checkedReduceOnly) && (
+            <div className="w-full mb-2">
+              <div className="flex items-center gap-1">
+                <Switch onChange={setCheckedTPSL} checked={checkedTPSL} onColor="#408984" offColor="#536879" handleDiameter={10} width={26} height={14} uncheckedIcon={false} checkedIcon={false} />
+                <span className="text-sm">TP/SL</span>
+              </div>
+              {
+                checkedTPSL && (
+                  <div className="w-full">
+                    <div className="relative w-full text-sm">
+                      {/* Dropdown button */}
+                      <div
+                        onClick={() => setTpPositionOpen(!tpPostionOpen)}
+                        className="w-full flex items-center cursor-pointer rounded-md gap-2 py-2 text-gray-200 focus:outline-none duration-200"
+                      >
+                        <span>{tpPosition}</span>
+                        {tpPostionOpen ? (
+                          <ChevronUp className="h-4 w-4 text-gray-400" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4 text-gray-400" />
+                        )}
+                      </div>
+                      {/* Dropdown list */}
+                      {tpPostionOpen && (
+                        <ul className="absolute left-0 top-8 w-full rounded-md bg-[#1c2732] py-1 shadow-lg ring-1 ring-black/40 z-20">
+                          {tpPostions.map((type) => (
+                            <li
+                              key={type}
+                              onClick={() => {
+                                setTpPosition(type);
+                                setTpPositionOpen(false);
+                              }}
+                              className={`flex items-center justify-between cursor-pointer px-3 py-2 text-gray-300 hover:bg-[#23303C] ${type === tpPosition ? "text-white font-medium" : ""
+                                }`}
+                            >
+                              {type}
+                              {type === tpPosition && (
+                                <span className="ml-2 h-1 w-1 rounded-full bg-green-400"></span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <PriceOffsetInputs />
+                  </div>
+                )
+              }
+            </div>
+          )
+        }
+        <div className="flex items-center gap-1">
+          <Switch onChange={setCheckedReduceOnly} checked={checkedReduceOnly} onColor="#408984" offColor="#536879" handleDiameter={10} width={26} height={14} uncheckedIcon={false} checkedIcon={false} />
+          <span className="text-sm">Reduce only</span>
+        </div>
+
+        {/* Radio Box and Confirm */}
+        <div className="w-full p-2 rounded-md mt-2.5 bg-[#23303C]">
+          <div className="flex items-center gap-3">
+            {/* Post only */}
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="radio"
+                name="orderRadio"
+                value="Post only"
+                checked={orderRadio === "Post only"}
+                onChange={() => setOrderRadio("Post only")}
+                className="text-blue-600 focus:ring-blue-500 border-gray-300"
+              />
+              <span className="text-sm text-gray-400 mt-[2px]">Post only</span>
+            </label>
+
+            {/* IOC */}
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="radio"
+                name="orderRadio"
+                value="IOC"
+                checked={orderRadio === "IOC"}
+                onChange={() => setOrderRadio("IOC")}
+                className="text-blue-600 focus:ring-blue-500 border-gray-300"
+              />
+              <span className="text-sm text-gray-400 mt-[2px]">IOC</span>
+            </label>
+
+            {/* FOK */}
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="radio"
+                name="orderRadio"
+                value="FOK"
+                checked={orderRadio === "FOK"}
+                onChange={() => setOrderRadio("FOK")}
+                className="text-blue-600 focus:ring-blue-500 border-gray-300"
+              />
+              <span className="text-sm text-gray-400 mt-[2px]">FOK</span>
+            </label>
+          </div>
+          <div className="flex items-center gap-5 text-gray-400 mt-3">
+            <div className="flex items-center gap-1">
+              <input type="checkbox" />
+              <span className="mt-[2px]">Order confirm</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <input type="checkbox" />
+              <span className="mt-[2px]">Hidden</span>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   );
 };
