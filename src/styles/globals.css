@@ -31,3 +31,7 @@ input::placeholder {
 .tradingview-widget-copyright {
   display: none;
 }
+
+button.mesh-dark {
+  background-color: #3468D1 !important;
+}

@@ -19,7 +19,7 @@ const WalletConnect = () => {
   return (
     <div className="rounded-md pt-4 p-3 flex flex-col items-center">
       <div>
-        <p className="text-center text-[1.5em] text-[#12bf8f] font-semibold pb-2 flex items-center justify-center">
+        <p className="text-center text-[1.5em] bg-clip-text text-transparent bg-gradient-to-tr from-[#A9F7FF] to-[#3468D1]  font-semibold pb-2 flex items-center justify-center">
           {/* {!connected && "Connect Wallet"}
             {!connected && account && "Create Account"}
             {!connected && !account && "Create Account"} */}
