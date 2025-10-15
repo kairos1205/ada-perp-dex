@@ -14,8 +14,8 @@ const MarketInfoCom: React.FC<MarketInfoComProps> = ({ marketInfo }) => {
         </span>
         <span className="font-bold text-xl">{marketInfo.symbol}</span>
       </div>
-      <div className="flex flex-row justify-start items-center gap-12">
-        <div className="price flex items-center h-100% border-l border-l-white border-solid text-[#12bf8f]">${marketInfo.mark_price}</div>
+      <div className="flex flex-row justify-start items-center gap-16">
+        <div className="price flex items-center text-2xl h-100% border-l border-l-white border-solid text-[#6a95eb] font-semibold">${marketInfo.mark_price}</div>
         <div className="flex flex-col items-center">
           <div className="text-xs font-semibold text-[#dddddd77]">24h change</div>
           <div>{FormatNumber(marketInfo["24h_amount"])}</div>
