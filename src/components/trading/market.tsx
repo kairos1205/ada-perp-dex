@@ -51,7 +51,7 @@ const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
       <div className="px-1 w-full border border-gray-200  rounded-lg overflow-hidden">
         <table className="w-full table-fixed">
           {/* Table Header */}
-          <thead className="text-[14px] text-[#5f666e] bg-[#16151d] sticky top-0 z-10">
+          <thead className="text-[14px] text-[#5f666e] bg-[#161E28] sticky top-0 z-10">
             <tr>
               <th className="h-[36px] w-1/2 text-left px-2">Market / Volume</th>
               <th className="h-[36px] w-1/2 text-left px-2">Price / Change</th>

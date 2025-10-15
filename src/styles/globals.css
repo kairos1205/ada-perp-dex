@@ -11,6 +11,10 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+input::placeholder {
+  color: #80808577 !important;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
   height: 10px;
@@ -19,7 +23,11 @@ body {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #252131;
+  background: #23303C;
   border-radius: 30px;
-  border: 3px none #252131;
+  border: 3px none #23303C;
+}
+
+.tradingview-widget-copyright {
+  display: none;
 }

@@ -19,7 +19,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         flex items-center gap-2
         w-full max-w-xs px-3 py-2
         text-sm text-gray-200
-        bg-[#1a1625] border-solid border-[1px] border-[rgba(255,255,255,0.8)]
+        bg-[#2A3946] border-solid border-[1px] border-[rgba(255,255,255,0.8)]
         rounded-md
         focus-within:ring-1 focus-within:ring-teal-500
         transition

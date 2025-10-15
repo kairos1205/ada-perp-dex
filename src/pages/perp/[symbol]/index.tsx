@@ -57,15 +57,15 @@ const Page = () => {
     <>
       <Navbar />
       <div className="flex flex-row gap-2 p-2">
-        <div className="min-w-[200px] min-h-[800px] max-w-[300px] bg-[#16151d] rounded-lg p-4">
+        <div className="min-w-[200px] min-h-[800px] max-w-[300px] bg-[#161E28] rounded-lg p-4">
           <Market onSymbolChange={onSymbolChange} />
         </div>
         <div className="flex flex-col gap-2 w-full">
-          <div className="bg-[#16151d] rounded-md p-3 flex items-center justify-start">
+          <div className="bg-[#161E28] rounded-md p-3 flex items-center justify-start">
             <MarketInfoCom marketInfo={marketInfo} />
           </div>
           <div className="flex flex-row gap-2">
-            <div className="bg-[#16151d] p-2 rounded-md min-h-[400px] w-[100%]">
+            <div className="bg-[#161E28] p-2 rounded-md min-h-[400px] w-[100%]">
               {/* <AdvancedRealTimeChart
                 // symbol={TradingViewSymbol(symbol)}
                 symbol="BTCUSDC"
@@ -78,19 +78,19 @@ const Page = () => {
                 autosize
               />
             </div>
-            <div className="bg-[#16151d] max-w-[300px] min-w-[300px] p-20 ">
+            <div className="bg-[#161E28] max-w-[300px] min-w-[300px] p-20 ">
               Order Book
             </div>
           </div>
-          <div className="bg-[#16151d] rounded-md p-2">
+          <div className="bg-[#161E28] rounded-md p-2">
             <Positions symbol={symbol} />
           </div>
         </div>
         <div className="flex flex-col gap-2 min-w-[300px]">
-          <div className="bg-[#16151d] rounded-md">
+          <div className="bg-[#161E28] rounded-md">
             <WalletConnect />
           </div>
-          <div className="bg-[#16151d] rounded-md">
+          <div className="bg-[#161E28] rounded-md">
             <TradeOrderPanel />
           </div>
         </div>

@@ -41,11 +41,11 @@ const WalletConnect = () => {
         {!connected ? (
           <CardanoWallet isDark={true}/>
         ) : account == "" ? (
-          <div className="px-4 py-2 border-solid bg-[#252131] rounded-md cursor-pointer hover:bg-[#2d293a]">
+          <div className="px-4 py-2 border-solid bg-[#23303C] rounded-md cursor-pointer hover:bg-[#2d293a]">
             Create Account
           </div>
         ) : (
-          <div className="px-4 py-2 border-solid bg-[#252131] rounded-md cursor-pointer">Deposit</div>
+          <div className="px-4 py-2 border-solid bg-[#23303C] rounded-md cursor-pointer">Deposit</div>
         )}
       </div>
     </div>
