@@ -6,7 +6,7 @@ import "@meshsdk/react/styles.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="roboto-font">
+    <div className="oswald-font">
       <MeshProvider>
         <Component {...pageProps} />
       </MeshProvider>

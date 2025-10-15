@@ -1,0 +1,1 @@
+declare module 'react-responsive-modal/styles.css';
