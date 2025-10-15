@@ -44,7 +44,7 @@ const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
 
   return (
     <div className="w-full">
-      <div className="px-1 pb-1 w-full">
+      <div className="px-3 pb-1 w-full">
         <SearchInput onChange={setSearchKeyword} value={searchKeyword} />
       </div>
 
@@ -53,16 +53,16 @@ const Market: React.FC<SymbolsProps> = ({ onSymbolChange }) => {
           {/* Table Header */}
           <thead className="text-[14px] text-[#5f666e] bg-[#161E28] sticky top-0 z-10">
             <tr>
-              <th className="h-[36px] w-1/2 text-left px-2">Market / Volume</th>
-              <th className="h-[36px] w-1/2 text-left px-2">Price / Change</th>
+              <th className="h-[36px] w-1/2 px-2">Market / Volume</th>
+              <th className="h-[36px] w-1/2 px-2">Price / Change</th>
             </tr>
           </thead>
         </table>
 
         {/* Scrollable Body */}
-        <div className="max-h-[800px] min-h-[800px] overflow-y-auto px-2">
+        <div className="max-h-[800px] min-h-[800px] overflow-y-auto px-2 w-full">
           <table className="w-full table-fixed ">
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 w-full">
               {marketInfolist.filter(market => market.symbol.includes(searchKeyword.toUpperCase()))
                 .sort((a, b) => b.index_price - a.index_price)
                 .map((marketInfo) => (

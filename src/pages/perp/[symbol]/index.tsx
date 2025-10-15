@@ -57,7 +57,7 @@ const Page = () => {
     <>
       <Navbar />
       <div className="flex flex-row gap-2 p-2">
-        <div className="min-w-[200px] min-h-[800px] max-w-[300px] bg-[#161E28] rounded-lg p-4">
+        <div className="min-w-[200px] min-h-[800px] max-w-[300px] bg-[#161E28] rounded-lg py-4">
           <Market onSymbolChange={onSymbolChange} />
         </div>
         <div className="flex flex-col gap-2 w-full">

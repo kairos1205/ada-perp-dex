@@ -9,7 +9,7 @@ const MarketSymbol: React.FC<MarketSymbolProps> = (value) => {
   const coin = value.symbol.split("_")[1];
   const logoUrl = LogoUrl(coin);
   return (
-    <tr className="w-full mt-2 cursor-pointer hover:bg-[#703fa82c] border-solid hover:rounded-lg p-2 flex justify-between items-center" onClick={value.onClick}>
+    <tr className="w-full mt-2 cursor-pointer hover:bg-[#25435f2c] border-solid hover:rounded-lg p-2 flex justify-between items-center" onClick={value.onClick}>
       <td className="">
         <div className="flex flex-row gap-2 items-center">
           <svg
