@@ -54,17 +54,17 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
   return (
     <div className="p-4 space-y-3 w-[100%]">
       {/* Tabs */}
-      <div className="grid grid-cols-2 bg-[#1c2732] rounded-lg overflow-hidden">
+      <div className="grid grid-cols-2 rounded-lg overflow-hidden gap-2">
         <div
           onClick={() => setSide("buy")}
-          className={`py-2 font-semibold flex items-center justify-center cursor-pointer hover:text-white hover:duration-300 ${side === "buy" ? "bg-green-600" : "text-gray-400"
+          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-lg w-full hover:text-white hover:duration-300 ${side === "buy" ? "bg-green-600" : "text-gray-400 bg-[#1c2732]"
             }`}
         >
           Buy
         </div>
         <div
           onClick={() => setSide("sell")}
-          className={`py-2 font-semibold flex items-center justify-center cursor-pointer hover:text-white hover:duration-300 ${side === "sell" ? "bg-pink-600" : "text-gray-400"
+          className={`py-2 font-semibold flex items-center justify-center cursor-pointer rounded-lg w-full hover:text-white hover:duration-300 ${side === "sell" ? "bg-[#D73866] hover:bg-[#B73866]" : "text-gray-400 bg-[#1c2732]"
             }`}
         >
           Sell
@@ -72,7 +72,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
       </div>
 
       {/* Order type + leverage */}
-      <div className="flex justify-between items-center text-sm w-full gap-2">
+      <div className="grid grid-cols-2 items-center text-sm w-full gap-2">
         <div className="relative w-full text-sm">
           {/* Dropdown button */}
           <div
@@ -499,7 +499,7 @@ const TradeOrderPanel: React.FC<TradeOrderPanelProps> = ({
         )
       }
       {/* Slider */}
-      <input type="range" className="w-full accent-pink-600" />
+      <input type="range" className="w-full accent-blue-500" />
 
       {/* Action button */}
       <button
